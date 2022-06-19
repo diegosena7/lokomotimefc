@@ -34,5 +34,5 @@ public class Jogador {
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name="data_nascimento")
-    private LocalDate dataNascimento;
+    private LocalDate data_nascimento;
 }
