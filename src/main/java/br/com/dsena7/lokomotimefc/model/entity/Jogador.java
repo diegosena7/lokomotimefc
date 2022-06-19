@@ -1,6 +1,8 @@
 package br.com.dsena7.lokomotimefc.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -10,6 +12,7 @@ import java.time.LocalDate;
 
 @Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="jogadores")
@@ -17,22 +20,17 @@ public class Jogador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private Integer idJogador;
+    private Integer id;
 
-    @Column(name="nome")
-    private String nomeJogador;
+    private String nome;
 
-    @Column(name="numero")
-    private Integer numeroJogador;
+    private Integer numero;
 
-    @Column(name="telefone")
-    private String telefoneJogador;
+    private String telefone;
 
-    @Column(name="posicao")
-    private String posicaoJogador;
+    private String posicao;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
-    @Column(name="data_nascimento")
+//    @JsonFormat(pattern = "dd/MM/aaaa")
     private LocalDate data_nascimento;
 }

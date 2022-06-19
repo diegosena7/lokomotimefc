@@ -23,22 +23,22 @@ public class JogadorServiceImplem implements JogadorService {
 
     @Override
     public List<JogadorDTO> getAllJogadores() {
-//        log.info("Método getAllJogadores inicializado...");
+        log.info("Método getAllJogadores inicializado...");
         List<Jogador> entity = repository.findAll();
 
         if(entity.isEmpty()){
-//            log.info("Lista de jogadores está vazia");
+            log.info("Lista de jogadores está vazia");
         }
             List<JogadorDTO> dto = mapper.toDtoList(entity);
 
-//            log.info("Quantidade de jogadores na base...{}", entity.size());
+            log.info("Quantidade de jogadores na base...{}", entity.size());
 
         return dto;
     }
 
     @Override
     public JogadorDTO insertJogador(JogadorDTO jogadorDTO) {
-//        log.info("Método insertJogador inicializado...");
+        log.info("Método insertJogador inicializado...");
         Jogador jogador = repository.save(mapper.dtoToEntity(jogadorDTO));
         return mapper.entityToDto(jogador);
     }

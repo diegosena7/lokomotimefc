@@ -2,7 +2,6 @@ package br.com.dsena7.lokomotimefc.controller;
 
 import br.com.dsena7.lokomotimefc.model.dto.JogadorDTO;
 import br.com.dsena7.lokomotimefc.service.implem.JogadorServiceImplem;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
