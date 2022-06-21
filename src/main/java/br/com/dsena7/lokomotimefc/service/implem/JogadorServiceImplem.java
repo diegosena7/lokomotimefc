@@ -1,5 +1,6 @@
 package br.com.dsena7.lokomotimefc.service.implem;
 
+import br.com.dsena7.lokomotimefc.exceptions.BusinessException;
 import br.com.dsena7.lokomotimefc.model.dto.JogadorDTO;
 import br.com.dsena7.lokomotimefc.model.entity.Jogador;
 import br.com.dsena7.lokomotimefc.model.mapper.JogadorMapper;
@@ -31,15 +32,23 @@ public class JogadorServiceImplem implements JogadorService {
         }
             List<JogadorDTO> dto = mapper.toDtoList(entity);
 
-            log.info("Quantidade de jogadores na base...{}", entity.size());
+            log.info("Quantidade de jogadores na base = {}", entity.size());
 
         return dto;
     }
 
-    @Override
-    public JogadorDTO insertJogador(JogadorDTO jogadorDTO) {
+	@Override
+    public JogadorDTO insertJogador(JogadorDTO jogadorDTO) throws BusinessException {
         log.info("Método insertJogador inicializado...");
+        
+        if(repository.findById(jogadorDTO.getId()) != null && repository.findById(jogadorDTO.getId()).isPresent()) {
+        	throw new BusinessException("Jogador já cadastrado na base");
+        }
+        
         Jogador jogador = repository.save(mapper.dtoToEntity(jogadorDTO));
+        
+        
+        log.info("Jogador {}, número {} foi inserido na base", jogadorDTO.getNome(), jogadorDTO.getNumero());
         return mapper.entityToDto(jogador);
     }
 }
