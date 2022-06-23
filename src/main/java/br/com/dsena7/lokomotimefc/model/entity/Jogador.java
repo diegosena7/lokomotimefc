@@ -1,6 +1,5 @@
 package br.com.dsena7.lokomotimefc.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,6 +30,5 @@ public class Jogador {
     private String posicao;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
-//    @JsonFormat(pattern = "dd/MM/aaaa")
     private LocalDate data_nascimento;
 }

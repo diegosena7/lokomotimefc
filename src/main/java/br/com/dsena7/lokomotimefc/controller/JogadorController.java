@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -25,5 +26,10 @@ public class JogadorController {
     @PostMapping
     public ResponseEntity<JogadorDTO> inserirJogador(@RequestBody JogadorDTO requestJogador) throws BusinessException{
         return ResponseEntity.ok().body(serviceImplem.insertJogador(requestJogador));
+    }
+    
+    @PatchMapping
+    public ResponseEntity<Map<String, Object>> atualizarJogador(@RequestBody Map<String, Object> bodyRequest) throws BusinessException{
+    	 return ResponseEntity.ok().body(serviceImplem.atualizaJogador(bodyRequest));
     }
 }
