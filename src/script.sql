@@ -23,8 +23,8 @@ CREATE TABLE lokomotimefc.Times_Adversarios (
 	PRIMARY KEY (id)
 );
 
-select * from jogadores;
-
+select * from jogadores where id = 2;
+SELECT * FROM jogadores r where r.id = :id;
 insert into jogadores (data_nascimento, nome, numero, posicao, telefone) values ('1989-02-26 13:17:17', "Diego Sena", 7, "Volante", "11 947168617");
 
 

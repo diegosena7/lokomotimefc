@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +30,7 @@ public class JogadorController {
     }
     
     @PatchMapping
-    public ResponseEntity<Map<String, Object>> atualizarJogador(@RequestBody Map<String, Object> bodyRequest) throws BusinessException{
+    public ResponseEntity<Map<String, Object>> atualizarJogador(@RequestBody Map<String, Object> bodyRequest) throws BusinessException, ParseException{
     	 return ResponseEntity.ok().body(serviceImplem.atualizaJogador(bodyRequest));
     }
 }

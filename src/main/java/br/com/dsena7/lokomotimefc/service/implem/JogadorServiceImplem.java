@@ -1,5 +1,15 @@
 package br.com.dsena7.lokomotimefc.service.implem;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import br.com.dsena7.lokomotimefc.exceptions.BusinessException;
 import br.com.dsena7.lokomotimefc.model.dto.JogadorDTO;
 import br.com.dsena7.lokomotimefc.model.entity.Jogador;
@@ -7,17 +17,6 @@ import br.com.dsena7.lokomotimefc.model.mapper.JogadorMapper;
 import br.com.dsena7.lokomotimefc.repository.JogadorRepository;
 import br.com.dsena7.lokomotimefc.service.JogadorService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -59,7 +58,7 @@ public class JogadorServiceImplem implements JogadorService {
 	}
 
 	@Override
-	public Map<String, Object> atualizaJogador(Map<String, Object> mapBody) throws BusinessException {
+	public Map<String, Object> atualizaJogador(Map<String, Object> mapBody) throws BusinessException, ParseException {
 
 		Optional<Jogador> jogadorRequestById = repository.findById(Integer.valueOf(mapBody.get("id").toString()));
 		
@@ -73,9 +72,9 @@ public class JogadorServiceImplem implements JogadorService {
 		return mapBody;
 	}
 
-	private Jogador insertMapInEntity(Optional<Jogador> jogadorRequestById, Map<String, Object> mapBody) throws BusinessException {
+	private Jogador insertMapInEntity(Optional<Jogador> jogadorRequestById, Map<String, Object> mapBody) throws BusinessException, ParseException {
 		
-		DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		
 		Object idJogador = mapBody.get("id");
 		if (idJogador == null || !(idJogador instanceof Number)) {
@@ -104,8 +103,8 @@ public class JogadorServiceImplem implements JogadorService {
 		
 		Object dtNascimento = mapBody.get("data_nascimento");
 		if(posicaoJogador != null) {
-			LocalDate  d1 = LocalDate.parse(dtNascimento.toString(), df);
-			jogadorRequestById.get().setData_nascimento(d1);
+			Date teste = sdf.parse(dtNascimento.toString());
+			jogadorRequestById.get().setData_nascimento(teste);
 		}
 		return jogadorRequestById.get();
 	}
