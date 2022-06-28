@@ -40,6 +40,7 @@ public class JogadorServiceImplem implements JogadorService {
 
 		log.info("Quantidade de jogadores na base = {}", entity.size());
 
+		log.info("Método getAllJogadores finalizado...");
 		return dto;
 	}
 
@@ -54,11 +55,14 @@ public class JogadorServiceImplem implements JogadorService {
 		Jogador jogador = repository.save(mapper.dtoToEntity(jogadorDTO));
 
 		log.info("Jogador {}, número {} foi inserido na base", jogadorDTO.getNome(), jogadorDTO.getNumero());
+		log.info("Método insertJogador finalizado...");
 		return mapper.entityToDto(jogador);
 	}
 
 	@Override
 	public Map<String, Object> atualizaJogador(Map<String, Object> mapBody) throws BusinessException, ParseException {
+
+		log.info("Método atualizaJogador inicializado...");
 
 		Optional<Jogador> jogadorRequestById = repository.findById(Integer.valueOf(mapBody.get("id").toString()));
 		
@@ -69,6 +73,7 @@ public class JogadorServiceImplem implements JogadorService {
 		Jogador jogadorUpdated = insertMapInEntity(jogadorRequestById, mapBody);
 		repository.save(jogadorUpdated);
 
+		log.info("Método atualizaJogador finalizado...");
 		return mapBody;
 	}
 
