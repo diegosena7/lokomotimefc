@@ -4,6 +4,7 @@ import br.com.dsena7.lokomotimefc.exceptions.BusinessException;
 import br.com.dsena7.lokomotimefc.model.dto.JogadorDTO;
 import br.com.dsena7.lokomotimefc.service.implem.JogadorServiceImplem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,5 +33,11 @@ public class JogadorController {
     @PatchMapping
     public ResponseEntity<Map<String, Object>> atualizarJogador(@RequestBody Map<String, Object> bodyRequest) throws BusinessException, ParseException{
     	 return ResponseEntity.ok().body(serviceImplem.atualizaJogador(bodyRequest));
+    }
+
+    @DeleteMapping(value = "/{idJogador}")
+    public ResponseEntity<JogadorDTO> deleteAfiliado(@PathVariable("idJogador") Integer idJogador) throws BusinessException {
+        serviceImplem.excluirJogador(idJogador);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

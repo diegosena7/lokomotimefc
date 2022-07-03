@@ -77,6 +77,17 @@ public class JogadorServiceImplem implements JogadorService {
 		return mapBody;
 	}
 
+	@Override
+	public void excluirJogador(Integer idJogador) throws BusinessException {
+		log.info("Método excluirJogador inicializado...");
+		if(repository.findById(idJogador).isEmpty()){
+			throw new BusinessException("Jogador não localizado, verifique o id informado.");
+		}
+		repository.deleteById(idJogador);
+		log.info("Método excluirJogador finalizado...");
+	}
+
+
 	private Jogador insertMapInEntity(Optional<Jogador> jogadorRequestById, Map<String, Object> mapBody) throws BusinessException, ParseException {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");

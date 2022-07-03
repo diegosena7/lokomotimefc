@@ -17,4 +17,5 @@ public interface JogadorService {
     
     Map<String, Object> atualizaJogador(Map<String, Object> mapBody) throws BusinessException, ParseException;
 
+    void excluirJogador(Integer idJogador) throws BusinessException;
 }
