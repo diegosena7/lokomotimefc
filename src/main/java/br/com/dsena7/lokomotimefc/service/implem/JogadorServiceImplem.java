@@ -64,6 +64,11 @@ public class JogadorServiceImplem implements JogadorService {
 
 		log.info("Método atualizaJogador inicializado...");
 
+		Object idJogador = mapBody.get("id");
+		if (idJogador == null || !(idJogador instanceof Number)) {
+			throw new BusinessException("Informe o id do Jogador para atualizar.");
+		}
+
 		Optional<Jogador> jogadorRequestById = repository.findById(Integer.valueOf(mapBody.get("id").toString()));
 		
 		if(jogadorRequestById.isEmpty()) {
@@ -91,11 +96,6 @@ public class JogadorServiceImplem implements JogadorService {
 	private Jogador insertMapInEntity(Optional<Jogador> jogadorRequestById, Map<String, Object> mapBody) throws BusinessException, ParseException {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		
-		Object idJogador = mapBody.get("id");
-		if (idJogador == null || !(idJogador instanceof Number)) {
-			throw new BusinessException("Informe o id do Jogador para atualizar.");
-		}
 		
 		Object nomeJogador = mapBody.get("nome");
 		if(nomeJogador != null) {
