@@ -118,9 +118,9 @@ public class JogadorServiceImplem implements JogadorService {
 		}
 		
 		Object dtNascimento = mapBody.get("data_nascimento");
-		if(posicaoJogador != null) {
-			Date teste = sdf.parse(dtNascimento.toString());
-			jogadorRequestById.get().setData_nascimento(teste);
+		if(dtNascimento != null) {
+			Date newDate = sdf.parse(dtNascimento.toString());
+			jogadorRequestById.get().setData_nascimento(newDate);
 		}
 		return jogadorRequestById.get();
 	}
