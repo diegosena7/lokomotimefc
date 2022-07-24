@@ -2,10 +2,7 @@ package br.com.dsena7.lokomotimefc.service.implem;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +38,7 @@ public class JogadorServiceImplem implements JogadorService {
 		log.info("Quantidade de jogadores na base = {}", entity.size());
 
 		log.info("Método getAllJogadores finalizado...");
+		Collections.sort(dto);
 		return dto;
 	}
 

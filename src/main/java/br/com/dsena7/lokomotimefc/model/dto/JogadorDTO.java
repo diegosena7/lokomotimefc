@@ -19,7 +19,7 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class JogadorDTO {
+public class JogadorDTO implements Comparable<JogadorDTO>{
 
     private Integer id;
 
@@ -35,51 +35,8 @@ public class JogadorDTO {
 //    @JsonFormat(pattern = "dd/MM/aaaa")
     private LocalDate data_nascimento;
 
-//    public Integer getId() {
-//        return id;
-//    }
-//
-//    public void setId(Integer id) {
-//        this.id = id;
-//    }
-//
-//    public String getNome() {
-//        return nome;
-//    }
-//
-//    public void setNome(String nome) {
-//        this.nome = nome;
-//    }
-//
-//    public Integer getNumero() {
-//        return numero;
-//    }
-//
-//    public void setNumero(Integer numero) {
-//        this.numero = numero;
-//    }
-//
-//    public String getTelefone() {
-//        return telefone;
-//    }
-//
-//    public void setTelefone(String telefone) {
-//        this.telefone = telefone;
-//    }
-//
-//    public String getPosicao() {
-//        return posicao;
-//    }
-//
-//    public void setPosicao(String posicao) {
-//        this.posicao = posicao;
-//    }
-//
-//    public LocalDate getData_nascimento() {
-//        return data_nascimento;
-//    }
-//
-//    public void setData_nascimento(LocalDate data_nascimento) {
-//        this.data_nascimento = data_nascimento;
-//    }
+    @Override
+    public int compareTo(JogadorDTO jogadorDTO) {
+        return this.nome.compareTo(jogadorDTO.nome);
+    }
 }
