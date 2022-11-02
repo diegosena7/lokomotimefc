@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import br.com.dsena7.lokomotimefc.model.dto.JogadorResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,14 +27,14 @@ public class JogadorServiceImplem implements JogadorService {
 	JogadorMapper mapper;
 
 	@Override
-	public List<JogadorDTO> getAllJogadores() {
+	public List<JogadorResponseDTO> getAllJogadores() {
 		log.info("Método getAllJogadores inicializado...");
 		List<Jogador> entity = repository.findAll();
 
 		if (entity.isEmpty()) {
 			log.info("Lista de jogadores está vazia");
 		}
-		List<JogadorDTO> dto = mapper.toDtoList(entity);
+		List<JogadorResponseDTO> dto = mapper.toDtoList(entity);
 
 		log.info("Quantidade de jogadores na base = {}", entity.size());
 
@@ -45,10 +46,6 @@ public class JogadorServiceImplem implements JogadorService {
 	@Override
 	public JogadorDTO insertJogador(JogadorDTO jogadorDTO) throws BusinessException {
 		log.info("Método insertJogador inicializado...");
-
-		if (repository.findById(jogadorDTO.getId()) != null && repository.findById(jogadorDTO.getId()).isPresent()) {
-			throw new BusinessException("Jogador já cadastrado na base");
-		}
 
 		Jogador jogador = repository.save(mapper.dtoToEntity(jogadorDTO));
 

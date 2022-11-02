@@ -1,16 +1,9 @@
 package br.com.dsena7.lokomotimefc.model.dto;
 
-import java.time.LocalDate;
-
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -19,9 +12,9 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class JogadorDTO implements Comparable<JogadorDTO>{
+public class JogadorResponseDTO implements Comparable<JogadorResponseDTO>{
 
-//    private Integer id;
+    private Integer id;
 
     private String nome;
 
@@ -36,7 +29,7 @@ public class JogadorDTO implements Comparable<JogadorDTO>{
     private LocalDate data_nascimento;
 
     @Override
-    public int compareTo(JogadorDTO jogadorDTO) {
+    public int compareTo(JogadorResponseDTO jogadorDTO) {
         return this.nome.compareTo(jogadorDTO.nome);
     }
 }

@@ -2,6 +2,7 @@ package br.com.dsena7.lokomotimefc.service;
 
 import br.com.dsena7.lokomotimefc.exceptions.BusinessException;
 import br.com.dsena7.lokomotimefc.model.dto.JogadorDTO;
+import br.com.dsena7.lokomotimefc.model.dto.JogadorResponseDTO;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -11,7 +12,7 @@ import java.util.Map;
 @Service
 public interface JogadorService {
 
-    List<JogadorDTO> getAllJogadores();
+    List<JogadorResponseDTO> getAllJogadores();
 
     JogadorDTO insertJogador(JogadorDTO jogadorDTO) throws BusinessException;
     

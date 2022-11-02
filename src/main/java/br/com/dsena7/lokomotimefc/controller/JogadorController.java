@@ -2,6 +2,7 @@ package br.com.dsena7.lokomotimefc.controller;
 
 import br.com.dsena7.lokomotimefc.exceptions.BusinessException;
 import br.com.dsena7.lokomotimefc.model.dto.JogadorDTO;
+import br.com.dsena7.lokomotimefc.model.dto.JogadorResponseDTO;
 import br.com.dsena7.lokomotimefc.service.implem.JogadorServiceImplem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,7 @@ public class JogadorController {
     JogadorServiceImplem serviceImplem;
 
     @GetMapping
-    public ResponseEntity<List<JogadorDTO>> buscaListaJogadores(){
+    public ResponseEntity<List<JogadorResponseDTO>> buscaListaJogadores(){
         return ResponseEntity.ok().body(serviceImplem.getAllJogadores());
     }
 
