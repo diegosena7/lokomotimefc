@@ -2,14 +2,10 @@ FROM openjdk:11
 
 WORKDIR /app
 
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
+ARG JAR_FILE=target/*.jar
 
-RUN /bin/sh
+COPY ${JAR_FILE} lokomotimefc-0.0.1-SNAPSHOT.jar
 
-COPY src ./src
-
-CMD ["./mvnw", "spring-boot:run"]
-ENTRYPOINT ["java","LokomotimefcApplication"]
+ENTRYPOINT ["java", "-jar", "lokomotimefc-0.0.1-SNAPSHOT.jar"]
 
 EXPOSE 8080
