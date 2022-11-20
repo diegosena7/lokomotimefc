@@ -1,7 +1,6 @@
 lokomotimefc
 Projeto do Lokomotime FC para gerenciamento do time
 
-<<<<<<< HEAD
 ## Stack utilizada
 
 **Java 8** 
@@ -22,14 +21,6 @@ Clone o projeto
 ```bash
   git clone https://github.com/diegosena7/lokomotimefc.git
 ```
-
-=======
-Stack utilizada
-Java 8
-
-Mysql 5.7
-
-Docker
 
 Autores
 @DiegoSena
