@@ -21,13 +21,6 @@ Clone o projeto
 ```bash
   git clone https://github.com/diegosena7/lokomotimefc.git
 ```
-
-Autores
-@DiegoSena
-Rodando localmente
-Clone o projeto
-
-git clone https://github.com/diegosena7/lokomotimefc.git
   
 Entre no diretório do projeto
 
