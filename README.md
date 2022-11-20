@@ -1,4 +1,4 @@
-lokomotimefc
+# lokomotimefc
 Projeto do Lokomotime FC para gerenciamento do time
 
 ## Stack utilizada
@@ -10,9 +10,7 @@ Projeto do Lokomotime FC para gerenciamento do time
 **Docker** 
 
 ## Autores
-
 - [@DiegoSena](https://github.com/diegosena7)
-
 
 ## Rodando localmente
 
@@ -30,7 +28,6 @@ Segue os comandos:
 
 
 ```bash
-=======
 1 - Usar o comando docker build -t lokomotimefc . para bildar (construir) a imagem do projeto.
 ```
 
